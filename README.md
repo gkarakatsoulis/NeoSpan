@@ -31,3 +31,21 @@ Create a Conda environment:
 conda create -n vNS python=3.10
 conda activate vNS
 
+# Mutation calling (SNV detection) using pathologist region annotation, spatial and/or single cell information.
+
+We show below how to run NeoSpan for the detection of SNVs using pathologist region annotation. It is a "two-stage" approach, which will be described bellow:
+
+## Step 1: Split/Filter the BAM file based on the pathologist region annotation.
+This step requires two data types as input:
+* Aligned sequencing reads in BAM format for all spots analysed. The input BAM file must contain the spot barcode information in the tag “CB” (as reported by 10x Genomics).
+* A csv file mapping each spot to a specific region (usually tumor vs normal, but other, cancer-type specific annotations could work as well).
+
+## Step 2: Mutation calling within each region using the SComatic tool.
+This step applies the SComatic tool to the region-specific BAM files created in Step 1. The procedure is similar (slight modifications) to the one used by the SComatic tool, considering spatial information and/or cell types.
+To briefly describe it, it includes:
+a) Splitting alignment file into spot clusters and/or cell-type-specific bams
+b) Collecting base count information
+c) Merging base count matrices
+d) Detection of somatic mutations
+
+For a more thorough description, refer to the [SComatic README]https://github.com/cortes-ciriano-lab/SComatic/blob/main/README.md#detection-of-somatic-mutations-in-single-cell-data-sets-using-scomatic
