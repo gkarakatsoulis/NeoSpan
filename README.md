@@ -30,6 +30,7 @@ Create a Conda environment:
 ```bash
 conda create -n vNS python=3.10
 conda activate vNS
+```
 
 # Mutation calling (SNV detection) using pathologist region annotation, spatial and/or single cell information.
 
