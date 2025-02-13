@@ -49,4 +49,4 @@ b) Collecting base count information
 c) Merging base count matrices
 d) Detection of somatic mutations
 
-For a more thorough description, refer to the [SComatic README]https://github.com/cortes-ciriano-lab/SComatic/blob/main/README.md#detection-of-somatic-mutations-in-single-cell-data-sets-using-scomatic
+For a more thorough description, refer to the [SComatic README](https://github.com/cortes-ciriano-lab/SComatic/blob/main/README.md#detection-of-somatic-mutations-in-single-cell-data-sets-using-scomatic)
