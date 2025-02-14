@@ -37,9 +37,16 @@ conda activate vNS
 We show below how to run NeoSpan for the detection of SNVs using pathologist region annotation. It is a "two-stage" approach, which will be described bellow:
 
 ## Step 1: Split/Filter the BAM file based on the pathologist region annotation.
-This step requires two data types as input:
+This step splits the BAM file into region-specific BAM files. To do so, the user provides a file mapping each spot barcode to a specific region. The script reads the unique regions that appear in the file, creates a new BAM file for each one separately, and writes it in an output directory provided by the user.
+
+The step requires two data types as input:
 * Aligned sequencing reads in BAM format for all spots analysed. The input BAM file must contain the spot barcode information in the tag “CB” (as reported by 10x Genomics).
 * A csv file mapping each spot to a specific region (usually tumor vs normal, but other, cancer-type specific annotations could work as well).
+
+```bash
+Scripts/1_Split_Bam_Regions.py
+
+```
 
 ## Step 2: Mutation calling within each region using the SComatic tool.
 This step applies the SComatic tool to the region-specific BAM files created in Step 1. The procedure is similar (slight modifications) to the one used by the SComatic tool, considering spatial information and/or cell types.
