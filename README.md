@@ -65,6 +65,40 @@ It requires the following data types as input:
 * (Optional) A csv file mapping each cell barcode to a cell type. The annotation should have been conducted within each spot. Only available when both spatial and single-cell information is available.
 * (Optional) A csv file mapping each cell barcode to a specific spot. Only needed if both spatial and single-cell information is available.
 
+**Execution**
+- Split the region-specific BAM files based on spot clusters and/or cell types.
+```bash
+Scripts/2_SplitBamSpotsCellTypes.py
+
+```
+
+- Construct a base count matrix for each spot cluster and/or cell type.
+```bash
+Scripts/3_BaseCellCounter.py
+
+```
+
+- Merge the count matrices derived above
+```bash
+Scripts/4_MergeBaseCellCounts.py
+
+```
+
+
+- Apply filters and Beta binomial tests to discount sites affected by recurrent technical artefacts as somatic mutations.
+
+```bash
+Scripts/5a_BetaBinEstimation.py # Estimate the Beta Binomial parameters
+
+Scripts/5b_BaseCellCalling.step1.py
+
+```
+
+- Apply additional filters based on external datasets (RNA editing and Panel of Normals).
+```bash
+Scripts/5c_BaseCellCalling.step2.py
+
+```
 
 # Neoantigen prediction
 
