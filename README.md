@@ -41,8 +41,9 @@ This step splits the BAM file into region-specific BAM files. To do so, the user
 
 The step requires two data types as input:
 * Aligned sequencing reads in BAM format for all spots analysed. The input BAM file must contain the spot barcode information in the tag “CB” (as reported by 10x Genomics).
-* A csv file mapping each spot to a specific region (usually tumor vs normal, but other, cancer-type specific annotations could work as well).
+* A csv file mapping each spot (named Barcode) to a specific region (named Region). Needs to be ";" delimitered. **Importanly, do not include doublets in this file**
 
+**Execution**
 ```bash
 Scripts/1_Split_Bam_Regions.py
 
@@ -63,6 +64,7 @@ It requires the following data types as input:
 * (Optional) A csv file mapping each spot barcode to a specific cluster. The clustering analysis should have been conducted based on expression data.
 * (Optional) A csv file mapping each cell barcode to a cell type. The annotation should have been conducted within each spot. Only available when both spatial and single-cell information is available.
 * (Optional) A csv file mapping each cell barcode to a specific spot. Only needed if both spatial and single-cell information is available.
+
 
 # Neoantigen prediction
 
