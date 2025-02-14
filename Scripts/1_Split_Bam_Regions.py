@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Feb  6 14:22:10 2025
-
-@author: George_K
-"""
-
 import pysam
 import pandas as pd
 import argparse
