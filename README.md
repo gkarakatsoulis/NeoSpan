@@ -12,8 +12,8 @@ The pipeline can be divided into three primary categories:
 
 ## Features
 - Split/Filter the BAM file based on the regions annotated by the pathologist. It is strongly recommended to include normal (non-tumor) regions.
-- Within each region, mutation calling (SNV detection) using spatial and/or cell-type information (Modified **SComatic** tool).
-- Construct region specific feature-spot matrices and exclude those that appear in the normal region.
+- Within each region, mutation calling (SNV detection) incorporating spatial and/or cell-type information (Modified, Region-Informed **SComatic** tool). The normal region is used for further artifact and germline variant exclusion.
+- For the non-normal regions, construct region-specific feature-spot matrices. Those matrices will not contain SNVs that appear in the normal region since they were removed in the previous step.
 - Neoantigen prediction using the **pVACseq**.
 - DGE analysis between mutated and unmutated spots, within the tumor region.
 - Spatial statistics.
@@ -62,7 +62,7 @@ options:
 ```
 
 ## Step 2: Mutation calling within each region using the SComatic tool.
-This step applies the **SComatic tool** (with slight modifications) to the region-specific BAM files created in Step 1. It considers spatial and/or cell types information.
+This step applies a modified version of the **SComatic tool** to the region-specific BAM files created in Step 1. It considers region, spatial and/or cell types information.
 
 To briefly describe it, it includes:
 
@@ -72,7 +72,7 @@ b) Collecting base count information
 
 c) Merging base count matrices
 
-d) Detection of somatic mutations. **Our -modified- tool considers additionally the pathologist region annotation for further removing germline variants and reducing the false positives.**
+d) Detection of somatic mutations. **Our -modified, region informed - tool considers additionally the pathologist region annotation for further removing germline variants and reducing the false positives.**
 
 For a more thorough description, refer to the [SComatic README](https://github.com/cortes-ciriano-lab/SComatic/blob/main/README.md#detection-of-somatic-mutations-in-single-cell-data-sets-using-scomatic).
 
@@ -160,7 +160,7 @@ Scripts/5c_BaseCellCalling.step2.py
 
 ```
 
-- Utilize pathologist-provided region annotations (normal) to exclude mutations identified in normal tissue, thereby minimizing germline variants and reducing false positives.
+- Use **bcftools** to additionally filter out mutations that are found in both the tumor and the normal, thereby keeping only tumor-specific variants.
 ```bash
 Scripts/5d_BaseCellCalling.step3.py
 
