@@ -54,9 +54,12 @@ This step applies the **SComatic tool** (with slight modifications) to the regio
 
 To briefly describe it, it includes:
 
-a) Splitting alignment file into spot clusters and/or cell-type-specific bam files \\
-b) Collecting base count information \\
-c) Merging base count matrices \\
+a) Splitting alignment file into spot clusters and/or cell-type-specific bam files
+
+b) Collecting base count information
+
+c) Merging base count matrices
+
 d) Detection of somatic mutations
 
 For a more thorough description, refer to the [SComatic README](https://github.com/cortes-ciriano-lab/SComatic/blob/main/README.md#detection-of-somatic-mutations-in-single-cell-data-sets-using-scomatic).
