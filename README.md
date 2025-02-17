@@ -110,7 +110,33 @@ options:
 
 - Construct a base count matrix for each spot cluster and/or cell type.
 ```bash
-Scripts/3_BaseCellCounter.py
+Scripts/3_BaseCellCounter.py --help
+usage: 3_BaseCellCounter.py [-h] --bam BAM --ref REF --chrom CHROM [--out_folder OUT_FOLDER] [--id ID] [--nprocs NPROCS] [--bin BIN] [--bed BED] [--bed_out BED_OUT] [--min_ac MIN_AC] [--min_af MIN_AF]
+                            [--min_dp MIN_DP] [--min_cc MIN_CC] [--min_bq MIN_BQ] [--min_mq MIN_MQ] [--max_dp MAX_DP] [--tmp_dir TMP_DIR]
+
+Script to obtain a list of base and cell counts in scRNA bam file
+
+options:
+  -h, --help            show this help message and exit
+  --bam BAM             BAM file to be analysed
+  --ref REF             Path to reference genome version. *fai must be available in the same directory as the reference genome file
+  --chrom CHROM         Chromosome to be analysed. --chrom all to analyse all chromosomes
+  --out_folder OUT_FOLDER
+                        Out folder
+  --id ID               Prefix used to name output file. If provided, please conform with the following format: *.[cell_type] . Example: sample1.t_cell. If not provided, the basename of the BAM file will be
+                        used.
+  --nprocs NPROCS       Number of processes [Default: 1]
+  --bin BIN             Bin size for running the analysis [Default: 50000]
+  --bed BED             Regions to focus the analysis on. Three-column bed file listing the chromosome, start and end for those regions to be analysed.
+  --bed_out BED_OUT     Regions to ignore in the analysis. Three-column bed file listing the chromosome, start and end for those regions to be ignored.
+  --min_ac MIN_AC       Minimum number of reads supporting the alternative allele required to consider a genomic site for mutation calling. Default: 0
+  --min_af MIN_AF       Minimum alternative allele fraction required to consider a genomic site for mutation calling. Default = 0
+  --min_dp MIN_DP       Minimum depth of coverage required to consider a genomic site for mutation calling. Default: 5
+  --min_cc MIN_CC       Minimum number of cells required to consider a genomic site for mutation calling. Default: 5
+  --min_bq MIN_BQ       Minimum base quality to compute allele counts. Default: 20
+  --min_mq MIN_MQ       Minimum mapping quality required to consider a read for analysis. Default: 255
+  --max_dp MAX_DP       Maximum number of reads per genomic site that are read in the pileup (to save time and memory). Set to zero to remove the limit.
+  --tmp_dir TMP_DIR     Path to a directory to be used to store temporary files during processing
 ```
 
 - Merge the count matrices derived above
