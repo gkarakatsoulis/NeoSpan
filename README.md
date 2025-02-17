@@ -86,13 +86,14 @@ It requires the following data types as input:
 - Split the region-specific BAM files based on spot clusters and/or cell types.
 ```bash
 Scripts/2_SplitBamSpotsCellTypes.py --help
-usage: 2_SplitBamSpotsCellTypes.py [-h] --bam BAM [--spot SPOT] [--cell CELL] [--spot_cell SPOT_CELL] [--id ID] [--max_nM MAX_NM] [--max_NH MAX_NH] [--min_MQ MIN_MQ] [--n_trim N_TRIM] [--outdir OUTDIR]
+usage: 2_SplitBamSpotsCellTypes.py [-h] --bam_folder BAM_FOLDER [--spot SPOT] [--cell CELL] [--spot_cell SPOT_CELL] [--id ID] [--max_nM MAX_NM] [--max_NH MAX_NH] [--min_MQ MIN_MQ] [--n_trim N_TRIM] [--outdir OUTDIR]
 
 Split alignment file into cell type specific BAMs
 
 options:
   -h, --help            show this help message and exit
-  --bam BAM             BAM file to be analysed (Sorted by coordinate)
+  --bam_folder BAM_FOLDER
+                        Folder containing the BAM files to be analysed (Sorted by coordinate)
   --spot SPOT           File mapping spot barcodes to clusters information
   --cell CELL           File mapping cell barcodes to cell type information
   --spot_cell SPOT_CELL
