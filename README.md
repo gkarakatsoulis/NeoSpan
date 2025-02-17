@@ -50,11 +50,13 @@ Scripts/1_Split_Bam_Regions.py
 ```
 
 ## Step 2: Mutation calling within each region using the SComatic tool.
-This step applies the *SComatic tool* (with slight modifications) to the region-specific BAM files created in Step 1. It considers spatial and/or cell types information.
+This step applies the **SComatic tool** (with slight modifications) to the region-specific BAM files created in Step 1. It considers spatial and/or cell types information.
+
 To briefly describe it, it includes:
-a) Splitting alignment file into spot clusters and/or cell-type-specific bam files
-b) Collecting base count information
-c) Merging base count matrices
+
+a) Splitting alignment file into spot clusters and/or cell-type-specific bam files \\
+b) Collecting base count information \\
+c) Merging base count matrices \\
 d) Detection of somatic mutations
 
 For a more thorough description, refer to the [SComatic README](https://github.com/cortes-ciriano-lab/SComatic/blob/main/README.md#detection-of-somatic-mutations-in-single-cell-data-sets-using-scomatic).
