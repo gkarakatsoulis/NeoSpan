@@ -156,7 +156,7 @@ Scripts/5a_BetaBinEstimation.py # Estimate the Beta Binomial parameters
 Scripts/5b_BaseCellCalling.step1.py
 ```
 
-- Apply additional filters based on external datasets (RNA editing and Panel of Normals).
+- Apply additional filters based on external datasets (RNA editing and Panel of Normals (PoN)). The PoN provided in this repository is computed using the Hg38 reference genome. For other datasets, please refer to [SComatic README -PoN](https://github.com/cortes-ciriano-lab/SComatic/blob/main/README.md#generating-a-custom-panel-of-normals).
 ```bash
 Scripts/5c_BaseCellCalling.step2.py
 
