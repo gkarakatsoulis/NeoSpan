@@ -85,7 +85,27 @@ It requires the following data types as input:
 **Execution**
 - Split the region-specific BAM files based on spot clusters and/or cell types.
 ```bash
-Scripts/2_SplitBamSpotsCellTypes.py
+Scripts/2_SplitBamSpotsCellTypes.py --help
+usage: 2_SplitBamSpotsCellTypes.py [-h] --bam BAM [--spot SPOT] [--cell CELL] [--spot_cell SPOT_CELL] [--id ID] [--max_nM MAX_NM] [--max_NH MAX_NH] [--min_MQ MIN_MQ] [--n_trim N_TRIM] [--outdir OUTDIR]
+
+Split alignment file into cell type specific BAMs
+
+options:
+  -h, --help            show this help message and exit
+  --bam BAM             BAM file to be analysed (Sorted by coordinate)
+  --spot SPOT           File mapping spot barcodes to clusters information
+  --cell CELL           File mapping cell barcodes to cell type information
+  --spot_cell SPOT_CELL
+                        Metadata file mapping cell barcodes to spot barcodes
+  --id ID               Sample ID
+  --max_nM MAX_NM       Maximum number of mismatches permitted to consider reads for analysis. By default, this filter is switched off, although we recommed using --max_nM 5. If applied, this filter requires
+                        having the nM tag in the bam file. [Default: Switched off]
+  --max_NH MAX_NH       Maximum number of alignment hits permitted to consider reads for analysis. By default, this filter is switched off, although we recommend using --max_NH 1. This filter requires having
+                        the NH tag in the bam file. [Default: Switched off]
+  --min_MQ MIN_MQ       Minimum mapping quality required to consider reads for analysis. Set this value to 0 to switch this filter off. --min_MQ 255 is recommended for RNA data, and --min_MQ 30 for DNA data.
+                        [Default: 255]
+  --n_trim N_TRIM       Number of bases trimmed by setting the base quality to 0 at the beginning and end of each read [Default: 0]
+  --outdir OUTDIR       Out directory
 ```
 
 - Construct a base count matrix for each spot cluster and/or cell type.
