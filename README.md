@@ -72,7 +72,7 @@ b) Collecting base count information
 
 c) Merging base count matrices
 
-d) Detection of somatic mutations
+d) Detection of somatic mutations. **Our -modified- tool considers additionally the pathologist region annotation for further removing germline variants and reducing the false positives.**
 
 For a more thorough description, refer to the [SComatic README](https://github.com/cortes-ciriano-lab/SComatic/blob/main/README.md#detection-of-somatic-mutations-in-single-cell-data-sets-using-scomatic).
 
@@ -159,6 +159,13 @@ Scripts/5b_BaseCellCalling.step1.py
 Scripts/5c_BaseCellCalling.step2.py
 
 ```
+
+- Utilize pathologist-provided region annotations (normal) to exclude mutations identified in normal tissue, thereby minimizing germline variants and reducing false positives.
+```bash
+Scripts/5d_BaseCellCalling.step3.py
+
+```
+
 
 # Neoantigen prediction
 
