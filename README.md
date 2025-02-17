@@ -45,7 +45,19 @@ The step requires two data types as input:
 
 **Execution**
 ```bash
-Scripts/1_Split_Bam_Regions.py
+Scripts/1_Split_Bam_Regions.py --help
+usage: 1_Split_Bam_Regions.py [-h] [--data_wd DATA_WD] --bam_file BAM_FILE --region_file REGION_FILE --output_dir OUTPUT_DIR
+
+Process a BAM file and split reads by region based on spot barcodes.
+
+options:
+  -h, --help            show this help message and exit
+  --data_wd DATA_WD     Path to the directory containing the BAM and CSV files.
+  --bam_file BAM_FILE   Name of the BAM file
+  --region_file REGION_FILE
+                        Name of the CSV file - region annotation
+  --output_dir OUTPUT_DIR
+                        Path to the output directory of the new BAM files.
 
 ```
 
