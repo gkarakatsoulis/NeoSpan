@@ -159,8 +159,20 @@ options:
 
 - Apply filters and Beta binomial tests to discount sites affected by recurrent technical artefacts as somatic mutations.
 
+According to the SComatic tool, the non-reference allele counts at homozygous reference sites are modelled using a Beta binomial distribution. This means that the error rate comes from a Beta distribution with unknown parameters α and β. The script below (Scripts/5a_BetaBinEstimation.py) allows the estimation of the Beta binomial distribution parameters.
+
 ```bash
-Scripts/5a_BetaBinEstimation.py # Estimate the Beta Binomial parameters
+Scripts/5a_BetaBinEstimation.py --help
+usage: 5a_BetaBinEstimation.py [-h] --tsv_dir TSV_DIR --outfile OUTFILE [--n_sites N_SITES] [--seed SEED]
+
+Script to estimate the Beta-binomial distribution parameters (alpha and beta) to be used for initial mutation calling.
+
+options:
+  -h, --help         show this help message and exit
+  --tsv_dir TSV_DIR  Folder containing the tsv files to be used for the beta-binomial fitting (obtained with BaseCellCounter.py script)
+  --outfile OUTFILE  Report with the estimated Beta-binomial parameters
+  --n_sites N_SITES  Approximate number of sites to be used for fitting the Beta-binomial distribution [Default: 500000]
+  --seed SEED        Random seed for computation [Default: 1992]
 
 Scripts/5b_BaseCellCalling.step1.py
 ```
