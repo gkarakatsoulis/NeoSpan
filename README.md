@@ -166,7 +166,7 @@ According to the SComatic tool, an initial filtering is based on Beta binomial t
 
 This is a two-step approach. It first requires the estimation of the Beta binomial parameters and then the application of the Beta binomial tests in the dataset.
 
-**Step 1:** The script below (Scripts/5a_BetaBinEstimation.py) allows the estimation of the Beta binomial distribution parameters.
+**Step (a):** The script below (Scripts/5a_BetaBinEstimation.py) allows the estimation of the Beta binomial distribution parameters.
 
 ```bash
 Scripts/5a_BetaBinEstimation.py --help
@@ -182,7 +182,7 @@ options:
   --seed SEED        Random seed for computation [Default: 1992]
 ```
 
-**Step 2:** Apply the Beta binomial tests using the parameters estimated in the previous step (Scripts/5a_BetaBinEstimation.py). 
+**Step (b):** Apply the Beta binomial tests using the parameters estimated in the previous step (Scripts/5a_BetaBinEstimation.py). 
 
 **Important Note:** The default parameter values for the beta distribution are only based on the dataset used in the SComatic tool. For other datasets, the user should always re-estimate them from the previous step!
 
@@ -239,13 +239,17 @@ optional arguments:
 ```
 
 
-### Apply additional filters based on external datasets (RNA editing and Panel of Normals (PoN)). The PoN provided in this repository is computed using the Hg38 reference genome. For other datasets, please refer to [SComatic README -PoN](https://github.com/cortes-ciriano-lab/SComatic/blob/main/README.md#generating-a-custom-panel-of-normals).
+### Apply additional filters based on external datasets (RNA editing and Panel of Normals (PoN)). 
+
+This filtering procedure seeks to further incorporate information based on RNA editing and PoNs. The PoN provided in this repository is computed using the Hg38 reference genome. For other datasets, please refer to [SComatic README -PoN](https://github.com/cortes-ciriano-lab/SComatic/blob/main/README.md#generating-a-custom-panel-of-normals).
+
 ```bash
 Scripts/5c_BaseCellCalling.step2.py
 
 ```
 
-- Use **bcftools** to additionally filter out mutations that are found in both the tumor and the normal, thereby keeping only tumor-specific variants.
+### Last filtering out mutations that are found in both the tumor and the normal, thereby keeping only tumor-specific variants.
+Use **bcftools** to a
 ```bash
 Scripts/5d_BaseCellCalling.step3.py
 
