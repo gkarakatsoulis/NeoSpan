@@ -144,7 +144,16 @@ options:
 
 - Merge the count matrices derived above
 ```bash
-Scripts/4_MergeBaseCellCounts.py
+Scripts/4_MergeBaseCellCounts.py --help
+usage: 4_MergeBaseCellCounts.py [-h] --tsv_folder TSV_FOLDER --outfile OUTFILE
+
+Script to merge the cell/base counts tsv files per cell type in only one
+
+options:
+  -h, --help            show this help message and exit
+  --tsv_folder TSV_FOLDER
+                        Path to the directory containing the base count files in tsv format for each cell type. All tsv files in the directory will be used. Avoid not desired tsv files in this folder
+  --outfile OUTFILE     Output file name
 ```
 
 
