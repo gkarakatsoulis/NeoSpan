@@ -88,7 +88,7 @@ It requires the following data types as input:
 * (Optional) A csv file mapping each cell barcode to a specific spot. Only needed if both spatial and single-cell information is available.
 
 **Execution**
-- Split the region-specific BAM files based on spot clusters and/or cell types.
+### Split the region-specific BAM files based on spot clusters and/or cell types.
 ```bash
 Scripts/2_SplitBamSpotsCellTypes.py --help
 usage: 2_SplitBamSpotsCellTypes.py [-h] --bam_folder BAM_FOLDER [--spot SPOT] [--cell CELL] [--spot_cell SPOT_CELL] [--id ID] [--max_nM MAX_NM] [--max_NH MAX_NH] [--min_MQ MIN_MQ] [--n_trim N_TRIM] [--outdir OUTDIR]
