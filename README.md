@@ -114,7 +114,7 @@ options:
   --outdir OUTDIR       Out directory
 ```
 
-- Construct a base count matrix for each spot cluster and/or cell type.
+### Construct a base count matrix for each spot cluster and/or cell type.
 ```bash
 Scripts/3_BaseCellCounter.py --help
 usage: 3_BaseCellCounter.py [-h] --bam BAM --ref REF --chrom CHROM [--out_folder OUT_FOLDER] [--id ID] [--nprocs NPROCS] [--bin BIN] [--bed BED] [--bed_out BED_OUT] [--min_ac MIN_AC] [--min_af MIN_AF]
@@ -145,7 +145,7 @@ options:
   --tmp_dir TMP_DIR     Path to a directory to be used to store temporary files during processing
 ```
 
-- Merge the count matrices derived above
+### Merge the count matrices derived above
 ```bash
 Scripts/4_MergeBaseCellCounts.py --help
 usage: 4_MergeBaseCellCounts.py [-h] --tsv_folder TSV_FOLDER --outfile OUTFILE
@@ -160,7 +160,7 @@ options:
 ```
 
 
-- Apply filters and Beta binomial tests to discount sites affected by recurrent technical artefacts as somatic mutations.
+### Apply filters and Beta binomial tests to discount sites affected by recurrent technical artefacts as somatic mutations.
 
 According to the SComatic tool, the non-reference allele counts at homozygous reference sites are modelled using a Beta binomial distribution. This means that the error rate comes from a Beta distribution with unknown parameters α and β. The script below (Scripts/5a_BetaBinEstimation.py) allows the estimation of the Beta binomial distribution parameters.
 
@@ -178,7 +178,9 @@ options:
   --seed SEED        Random seed for computation [Default: 1992]
 ```
 
-- Discount sites affected by recurrent technical artefacts as somatic mutations by applying Beta binomial tests with parameters estimated in the previous step (Scripts/5a_BetaBinEstimation.py). **Important Note:** The default parameter values for the beta distribution are only based on the dataset used in the SComatic tool. For other datasets, the user should always re-estimate them from the previous step!
+### Discount sites affected by recurrent technical artefacts as somatic mutations by applying Beta binomial tests with parameters estimated in the previous step (Scripts/5a_BetaBinEstimation.py). 
+
+**Important Note:** The default parameter values for the beta distribution are only based on the dataset used in the SComatic tool. For other datasets, the user should always re-estimate them from the previous step!
 ```bash
 Scripts/5b_BaseCellCalling.step1.py --help
 usage: BaseCellCalling.step1.py [-h] --infile INFILE --outfile
@@ -232,7 +234,7 @@ optional arguments:
 ```
 
 
-- Apply additional filters based on external datasets (RNA editing and Panel of Normals (PoN)). The PoN provided in this repository is computed using the Hg38 reference genome. For other datasets, please refer to [SComatic README -PoN](https://github.com/cortes-ciriano-lab/SComatic/blob/main/README.md#generating-a-custom-panel-of-normals).
+### Apply additional filters based on external datasets (RNA editing and Panel of Normals (PoN)). The PoN provided in this repository is computed using the Hg38 reference genome. For other datasets, please refer to [SComatic README -PoN](https://github.com/cortes-ciriano-lab/SComatic/blob/main/README.md#generating-a-custom-panel-of-normals).
 ```bash
 Scripts/5c_BaseCellCalling.step2.py
 
