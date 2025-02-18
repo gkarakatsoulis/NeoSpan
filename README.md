@@ -160,9 +160,13 @@ options:
 ```
 
 
-### Apply filters and Beta binomial tests to discount sites affected by recurrent technical artefacts as somatic mutations.
+### Discount sites affected by recurrent technical artefacts as somatic mutations by applying Beta binomial tests.
 
-According to the SComatic tool, the non-reference allele counts at homozygous reference sites are modelled using a Beta binomial distribution. This means that the error rate comes from a Beta distribution with unknown parameters α and β. The script below (Scripts/5a_BetaBinEstimation.py) allows the estimation of the Beta binomial distribution parameters.
+According to the SComatic tool, an initial filtering is based on Beta binomial tests. The non-reference allele counts at homozygous reference sites are modelled using a Beta binomial distribution. This means that the error rate comes from a Beta distribution with unknown parameters α and β. 
+
+This is a two-step approach. It first requires the estimation of the Beta binomial parameters and then the application of the Beta binomial tests in the dataset.
+
+**Step 1:** The script below (Scripts/5a_BetaBinEstimation.py) allows the estimation of the Beta binomial distribution parameters.
 
 ```bash
 Scripts/5a_BetaBinEstimation.py --help
@@ -178,9 +182,10 @@ options:
   --seed SEED        Random seed for computation [Default: 1992]
 ```
 
-### Discount sites affected by recurrent technical artefacts as somatic mutations by applying Beta binomial tests with parameters estimated in the previous step (Scripts/5a_BetaBinEstimation.py). 
+**Step 2:** Apply the Beta binomial tests using the parameters estimated in the previous step (Scripts/5a_BetaBinEstimation.py). 
 
 **Important Note:** The default parameter values for the beta distribution are only based on the dataset used in the SComatic tool. For other datasets, the user should always re-estimate them from the previous step!
+
 ```bash
 Scripts/5b_BaseCellCalling.step1.py --help
 usage: BaseCellCalling.step1.py [-h] --infile INFILE --outfile
