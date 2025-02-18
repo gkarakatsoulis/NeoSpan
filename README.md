@@ -176,9 +176,61 @@ options:
   --outfile OUTFILE  Report with the estimated Beta-binomial parameters
   --n_sites N_SITES  Approximate number of sites to be used for fitting the Beta-binomial distribution [Default: 500000]
   --seed SEED        Random seed for computation [Default: 1992]
-
-Scripts/5b_BaseCellCalling.step1.py
 ```
+
+- Discount sites affected by recurrent technical artefacts as somatic mutations by applying Beta binomial tests with parameters estimated in the previous step (Scripts/5a_BetaBinEstimation.py). **Important Note:** The default parameter values for the beta distribution are only based on the dataset used in the SComatic tool. For other datasets, the user should always re-estimate them from the previous step!
+```bash
+Scripts/5b_BaseCellCalling.step1.py --help
+usage: BaseCellCalling.step1.py [-h] --infile INFILE --outfile
+                                         OUTFILE --ref REF [--min_cov MIN_COV]
+                                         [--min_cells MIN_CELLS]
+                                         [--min_ac_cells MIN_AC_CELLS]
+                                         [--min_ac_reads MIN_AC_READS]
+                                         [--max_cell_types MAX_CELL_TYPES]
+                                         [--min_cell_types MIN_CELL_TYPES]
+                                         [--fisher_cutoff FISHER_CUTOFF]
+                                         [--alpha1 ALPHA1] [--beta1 BETA1]
+                                         [--alpha2 ALPHA2] [--beta2 BETA2]
+
+Script to perform the scRNA somatic variant calling
+
+optional arguments:
+  -h, --help            Show this help message and exit
+  --infile INFILE       Input file with all samples merged in a single tsv
+  --outfile OUTFILE     Output file prefix
+  --ref REF             Reference fasta file (*fai must exist)
+  --min_cov MIN_COV     Minimum depth of coverage to consider a sample.
+                        [Default: 5]
+  --min_cells MIN_CELLS
+                        Minimum number of cells with sequencing depth at a site to consider a
+                        genomic site for further analysis. [Default: 5]
+  --min_ac_cells MIN_AC_CELLS
+                        Minimum number of cells supporting the alternative
+                        allele to call a mutation. [Default: 2]
+  --min_ac_reads MIN_AC_READS
+                        Minimum number of reads supporting the alternative
+                        allele to call a mutation. [Default: 3]
+  --max_cell_types MAX_CELL_TYPES
+                        Maximum number of cell types carrying a mutation to
+                        make a somatic call. [Default: 1]
+  --min_cell_types MIN_CELL_TYPES
+                        Minimum number of cell types with enough coverage across enough
+                        cells to consider a site as callable [Default: 2]
+  --fisher_cutoff FISHER_CUTOFF
+                        P value cutoff for the Fisher's exact test performed to
+                        detect strand bias. A float value is expected, if applied,
+                        we recommend 0.001. By default, this test is switched
+                        off with a value of 1 [Default: 1]
+  --alpha1 ALPHA1       Alpha parameter for Beta distribution of read counts.
+                        [Default: 0.260288007167716]
+  --beta1 BETA1         Beta parameter for Beta distribution of read counts.
+                        [Default: 173.94711910763732]
+  --alpha2 ALPHA2       Alpha parameter for Beta distribution of cell counts.
+                        [Default: 0.08354121346569514]
+  --beta2 BETA2         Beta parameter for Beta distribution of cell counts.
+                        [Default: 103.47683488327257]
+```
+
 
 - Apply additional filters based on external datasets (RNA editing and Panel of Normals (PoN)). The PoN provided in this repository is computed using the Hg38 reference genome. For other datasets, please refer to [SComatic README -PoN](https://github.com/cortes-ciriano-lab/SComatic/blob/main/README.md#generating-a-custom-panel-of-normals).
 ```bash
