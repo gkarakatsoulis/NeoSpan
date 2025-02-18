@@ -27,12 +27,15 @@ The pipeline can be divided into three primary categories:
 - **Cell type annotation (csv)** (Optional) Only possible when we have single cell information apart from the spatial omics
 - **Spot to cell mapping (csv)** (Optional) Only needed if there is both spot and cell-type information
 
-## Installation
-Create a Conda environment:
+## Installation and Requirements
+It is strongly suggested to work in a Conda virtual environment.
+
+Create a Conda virtual environment:
 ```bash
 conda create -n vNS python=3.10
 conda activate vNS
 ```
+For further requirements regarding the SComatic tool, please refer to [SComatic README requirements](https://github.com/cortes-ciriano-lab/SComatic/blob/main/README.md#installation-and-requirements).
 
 # Mutation calling (SNV detection) using pathologist region annotation, spatial and/or single cell information.
 
