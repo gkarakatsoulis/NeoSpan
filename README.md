@@ -12,7 +12,11 @@ The pipeline can be divided into three primary categories:
 2) Neoantigen prediction
 3) Ranking and evaluation of the detected potential neoantigens.
 
-The mutation calling is performed applying a modified version of the **[SComatic tool](https://github.com/cortes-ciriano-lab/SComatic)**.
+The mutation calling is performed by applying a modified version of the **[SComatic tool](https://github.com/cortes-ciriano-lab/SComatic)**. The **SComatic tool** compares tumor cells with non-matched publicly available non-neoplastic samples. Instead, our approach uses tumor and normal cells from the same individual providing additional insights into personalized germline variants.
+
+The neoantigen prediction is utilized with [pVACtools](https://github.com/griffithlab/pVACtools).
+
+To rank and evaluate the detected potential neoantigens, we apply spatial statistics, differential gene expression analysis, and comparisons/visualizations based on metrics such as affinity scores and the fold-changes.
 
 ## Features
 - Split/Filter the BAM file based on the regions annotated by the pathologist. It is strongly recommended to include normal (non-tumor) regions.
