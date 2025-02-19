@@ -72,18 +72,18 @@ options:
 
 ```
 
-## Step 2: Mutation calling within each region using the SComatic tool.
-This step applies a modified version of the **SComatic tool** to the region-specific BAM files created in Step 1. It considers region, spatial and/or cell types information.
+## Step 2: Mutation calling within each non-normal region using the SComatic tool.
+This step applies a modified version of the **SComatic tool** to the region-specific BAM files created in Step 1. It considers region, spatial and/or cell type information.
 
 To briefly describe it, it includes:
 
-a) Splitting alignment file into spot clusters and/or cell-type-specific bam files
+a) For each non-normal region, splitting the alignment file into spot clusters and/or cell-type-specific bam files
 
 b) Collecting base count information
 
 c) Merging base count matrices
 
-d) Detection of somatic mutations. **Our -modified, region informed - tool considers additionally the pathologist region annotation for further removing germline variants and reducing the false positives.**
+d) Detection of somatic mutations. **Our -modified, region informed - tool considers additionally the pathologist region annotation for further removing germline variants and reducing the false positives. To do so, it compares the tumor regions with a normal coming from the same individual.**
 
 For a more thorough description, refer to the [SComatic README](https://github.com/cortes-ciriano-lab/SComatic/blob/main/README.md#detection-of-somatic-mutations-in-single-cell-data-sets-using-scomatic).
 
