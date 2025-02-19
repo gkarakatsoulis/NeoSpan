@@ -8,9 +8,11 @@ This pipeline allows end-to-end analysis for neoantigen prediction using Spatial
 It incorporates spatial information along with pathologist region annotation (e.g. tumor vs normal) to identify, highlight and rank/evaluate potential neoantigens.
 
 The pipeline can be divided into three primary categories:
-* Mutation calling (SNV detection) using pathologist region annotation and spatial information
-* Neoantigen prediction
-* Ranking and evaluation of the detected potential neoantigens.
+1) Mutation calling (SNV detection) using pathologist region annotation and spatial information
+2) Neoantigen prediction
+3) Ranking and evaluation of the detected potential neoantigens.
+
+The mutation calling is performed applying a modified version of the **[SComatic tool](https://github.com/cortes-ciriano-lab/SComatic)**.
 
 ## Features
 - Split/Filter the BAM file based on the regions annotated by the pathologist. It is strongly recommended to include normal (non-tumor) regions.
