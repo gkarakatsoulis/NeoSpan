@@ -20,7 +20,8 @@ To rank and evaluate the detected potential neoantigens, we apply spatial statis
 
 ## Features
 - Split/Filter the BAM file based on the regions annotated by the pathologist. It is strongly recommended to include normal (non-tumor) regions.
-- Within each region, mutation calling (SNV detection) incorporating spatial and/or cell-type information (Modified, Region-Informed **SComatic** tool). The normal region is used for further artifact and germline variant exclusion.
+- Create a -personalized- Panel of Normals (PoN) using the BAM file associated with the normal region.
+- Within each non-normal region, mutation calling (SNV detection) incorporating spatial and/or cell-type information (Modified, Region-Informed **SComatic** tool). The PoN created in the previous step is used for further artifact and germline variant exclusion.
 - For the non-normal regions, construct region-specific feature-spot matrices. Those matrices will not contain SNVs that appear in the normal region since they were removed in the previous step.
 - Neoantigen prediction using the **pVACseq**.
 - DGE analysis between mutated and unmutated spots, within the tumor region.
