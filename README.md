@@ -78,13 +78,15 @@ This step applies a modified version of the **SComatic tool** to the region-spec
 
 To briefly describe it, it includes:
 
-a) For each non-normal region, splitting the alignment file into spot clusters and/or cell-type-specific bam files
+a) Creating a -personalized- Panel of Normals (PoN) using the BAM file associated with the normal region.
 
-b) Collecting base count information
+b) For each non-normal region, splitting the alignment file into spot clusters and/or cell-type-specific bam files
 
-c) Merging base count matrices
+c) Collecting base count information
 
-d) Detection of somatic mutations. **Our -modified, region informed - tool considers additionally the pathologist region annotation for further removing germline variants and reducing the false positives. To do so, it compares the tumor regions with a normal coming from the same individual.**
+d) Merging base count matrices
+
+e) Detection of somatic mutations. **Through the personalized PoN, our -modified, region informed - tool considers the pathologist region annotation for further removing germline variants and reducing the false positives.**
 
 For a more thorough description, refer to the [SComatic README](https://github.com/cortes-ciriano-lab/SComatic/blob/main/README.md#detection-of-somatic-mutations-in-single-cell-data-sets-using-scomatic).
 
