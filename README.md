@@ -1,7 +1,7 @@
 # NeoSpan
 Neoantigen Prediction using Spatial Multi-Omic data - Pipeline
 
-![NeoSpan_Pipeline](https://github.com/user-attachments/assets/a4fe3ec4-ceb9-4327-9f42-695f2ec68a05)
+![NeoSpan_Pipeline](Files/NeoSpan_Pipeline.png)
 
 ## ABOUT
 This pipeline allows end-to-end analysis for neoantigen prediction using Spatial Multi-Omic data.
