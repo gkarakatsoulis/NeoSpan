@@ -264,6 +264,20 @@ Scripts/5d_BaseCellCalling.step3.py
 
 ```
 
+### Construct a feature-spot matrix with SNVs as rows, Spot clusters and/or cell types as columns and VAF as mutation values
+```bash
+Scripts/6_Feature_Spot_Matrix.py --help
+usage: 6_Feature_Spot_Matrix.py [-h] --infile INFILE [--file_dir FILE_DIR] [--outfile OUTFILE]
+
+Script to construct the feature-spot matrix
+
+options:
+  -h, --help           show this help message and exit
+  --infile INFILE      Input file with the mutations and spot information
+  --file_dir FILE_DIR  Path for the input file
+  --outfile OUTFILE    Output file prefix
+
+```
 
 # Neoantigen prediction
 
