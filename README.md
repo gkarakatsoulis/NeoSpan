@@ -264,7 +264,7 @@ Scripts/5d_BaseCellCalling.step3.py
 
 ```
 
-### Construct a feature-spot matrix with SNVs as rows, Spot clusters and/or cell types as columns and VAF as mutation values
+## Feature-spot matrix creation with SNVs as rows, Spot clusters and/or cell types as columns and VAF as mutation values
 ```bash
 Scripts/6_Feature_Spot_Matrix.py --help
 usage: 6_Feature_Spot_Matrix.py [-h] --infile INFILE [--file_dir FILE_DIR] [--outfile OUTFILE]
