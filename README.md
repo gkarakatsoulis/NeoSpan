@@ -5,14 +5,14 @@ Neoantigen Prediction using Spatial Multi-Omic data - Pipeline
 
 ## ABOUT
 This pipeline allows end-to-end analysis for neoantigen prediction using Spatial Multi-Omic data.
-It incorporates spatial information along with pathologist region annotation (e.g. tumor vs normal) to identify, highlight and rank/evaluate potential neoantigens.
+It incorporates spatial information along with (pathologist) region annotation (e.g. tumor vs normal) to identify, highlight and rank/evaluate potential neoantigens.
 
 The pipeline can be divided into three primary categories:
-1) Mutation calling (SNV detection) using pathologist region annotation and spatial information
+1) Mutation calling (SNV detection) using (pathologist) region annotation and spatial information
 2) Neoantigen prediction
 3) Ranking and evaluation of the detected potential neoantigens.
 
-The mutation calling is performed by applying a modified version of the **[SComatic tool](https://github.com/cortes-ciriano-lab/SComatic)**. The **SComatic tool** compares tumor cells with non-matched publicly available non-neoplastic samples. Instead, our approach uses tumor and normal cells from the same individual providing additional insights into personalized germline variants.
+The mutation calling is performed by applying a modified version of the **[SComatic tool](https://github.com/cortes-ciriano-lab/SComatic)**. The **SComatic tool** compares tumor cells with non-matched publicly available non-neoplastic samples. Instead, our approach uses tumor and normal cells from the same individual providing additional insights into personalized germline variants. **Note:** For our example, the annotations where performed by a pathologist. However, any classification method can work as well.
 
 The neoantigen prediction is utilized with [pVACtools](https://github.com/griffithlab/pVACtools).
 
