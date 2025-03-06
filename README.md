@@ -125,8 +125,8 @@ options:
 
 ### Construct a base count matrix for each spot cluster and/or cell type.
 ```bash
-Scripts/3_BaseCellCounter.py --help
-usage: 3_BaseCellCounter.py [-h] --bam BAM --ref REF --chrom CHROM [--out_folder OUT_FOLDER] [--id ID] [--nprocs NPROCS] [--bin BIN] [--bed BED] [--bed_out BED_OUT] [--min_ac MIN_AC] [--min_af MIN_AF]
+Scripts/3a_BaseCellCounter.py --help
+usage: 3a_BaseCellCounter.py [-h] --bam BAM --ref REF --chrom CHROM [--out_folder OUT_FOLDER] [--id ID] [--nprocs NPROCS] [--bin BIN] [--bed BED] [--bed_out BED_OUT] [--min_ac MIN_AC] [--min_af MIN_AF]
                             [--min_dp MIN_DP] [--min_cc MIN_CC] [--min_bq MIN_BQ] [--min_mq MIN_MQ] [--max_dp MAX_DP] [--tmp_dir TMP_DIR]
 
 Script to obtain a list of base and cell counts in scRNA bam file
@@ -152,6 +152,15 @@ options:
   --min_mq MIN_MQ       Minimum mapping quality required to consider a read for analysis. Default: 255
   --max_dp MAX_DP       Maximum number of reads per genomic site that are read in the pileup (to save time and memory). Set to zero to remove the limit.
   --tmp_dir TMP_DIR     Path to a directory to be used to store temporary files during processing
+```
+
+### Add the genotype information in all the base count matrices derived above
+
+Our objective is the neoantigen prediction. To this end, in a later step we will apply the pVACseq tool, which require the genotype information (GT) for each variant. The SComatic tool does not provide it. So, we add this step here to generate the GT.
+
+```bash
+Scripts/3b_GT_in_BaseCell.py
+
 ```
 
 ### Merge the count matrices derived above
@@ -257,6 +266,15 @@ Scripts/5c_BaseCellCalling.step2.py
 
 ```
 
+### Convert the TSV file to a VCF
+
+The mutation calling returns a TSV file that will also be used for the Feature-Spot matrix that will be derived later. However, the pVACseq for the neoantigen prediction requires a VCF file. Therefore, we add this step here.
+
+```bash
+Scripts/5d_Tsv_to_VCF.py
+
+```
+
 ### Last filtering out mutations that are found in both the tumor and the normal, thereby keeping only tumor-specific variants.
 Use **bcftools** to a
 ```bash
@@ -280,6 +298,14 @@ options:
 ```
 
 # Neoantigen prediction
+
+The Neoantigen prediction will be applied using the pVACseq tool. This tool requires VEP annotation. So, as a first step, we annotate the VCF file derived above.
+
+
+```bash
+vep --input_file my_VCF_file.vcf --output_file my_VEP_annotated_VCF_file.vcf.vcf --cache --offline --assembly GRCh38
+
+```
 
 We show below how to run NeoSpan for the Neoantigen Prediction. The procedure includes the following steps:
 1) Define the normal (non-tumor) region. For this reason, it is strongly recommended to include normal regions.
