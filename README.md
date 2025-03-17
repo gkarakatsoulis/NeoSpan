@@ -24,7 +24,7 @@ The neoantigen prediction can be utilized by several methods, each one correspon
     <li>Population-Based HLA Estimation. This can be extracted from publicly available HLA databases (e.g., <a href="http://www.allelefrequencies.net/">http://www.allelefrequencies.net/</a>). <b>Less patient-specific. Should be used only under the assumption that the ancestors share common HLA alleles.</b></li>
     <li>Pan-MHC approach for neoantigens. This method performs predictions across multiple HLA alleles. <b>Less accurate than allele-specific methods.</b></li>
   </ol>
-  <li>If no HLA data is available, then <b>DeepNovo</b> (<a href="https://github.com/nh2tran/DeepNovo">https://github.com/nh2tran/DeepNovo</a>). This method applies a deep-learning tool for peptide identification without using HLA data. <b>Less preferable than methods (a) and (b) when HLA typing is possible, since it yields lower accuracy (HLA binding is a key factor in immune response) and has less clinical validation.</b></li>
+  <li>If no HLA data is available, then <a href="https://github.com/nh2tran/DeepNovo">DeepNovo</a>. This method applies a deep-learning tool for peptide identification without using HLA data. <b>Less preferable than methods (a) and (b) when HLA typing is possible, since it yields lower accuracy (HLA binding is a key factor in immune response) and has less clinical validation.</b></li>
 </ol>
 
 
