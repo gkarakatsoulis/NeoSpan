@@ -17,7 +17,7 @@ The mutation calling is performed by applying a modified version of the **[SComa
 The neoantigen prediction can be utilized by several methods, each one corresponding to additional data available in our sample. 
 
 <ol type="a">
-  <li>If there is DNA Information (WGS or WES), then accurate HLA typing is possible. Therefore, we recommend to use <b>NetMHCpan</b> (<a href="https://services.healthtech.dtu.dk/services/NetMHCpan-4.1/">https://services.healthtech.dtu.dk/services/NetMHCpan-4.1/</a>), or, equivalently for end-to-end analysis the <b>pVACtools</b> (<a href="https://github.com/griffithlab/pVACtools">pVACtools</a>). <b>Optimal method.</b></li>
+  <li>If there is DNA Information (WGS or WES), then accurate HLA typing is possible. Therefore, we recommend to use <a href="https://services.healthtech.dtu.dk/services/NetMHCpan-4.1/">NetMHCpan</a>, or, equivalently for end-to-end analysis the <a href="https://github.com/griffithlab/pVACtools">pVACtools</a>. <b>Optimal method.</b></li>
   <li>If no complete HLA gene coverage is ensured, there are the following options available:</li>
   <ol type="i">
     <li>RNA-seq-based HLA typing. This can be done with <b><a href="https://github.com/FRED-2/OptiType">OptiType</a></b>. <b>Can provide an estimation of HLA, but is less accurate than method (a) when complete HLA typing is possible.</b></li>
