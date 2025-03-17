@@ -14,7 +14,15 @@ The pipeline can be divided into three primary categories:
 
 The mutation calling is performed by applying a modified version of the **[SComatic tool](https://github.com/cortes-ciriano-lab/SComatic)**. The **SComatic tool** compares tumor cells with non-matched publicly available non-neoplastic samples. Instead, our approach uses tumor and normal cells from the same individual providing additional insights into personalized germline variants. **Note:** For our example, the annotations where performed by a pathologist. However, any classification method can work as well.
 
-The neoantigen prediction is utilized with [pVACtools](https://github.com/griffithlab/pVACtools).
+The neoantigen prediction can be utilized by several methods, each one corresponding to additional data available in our sample. 
+a) If there is DNA Information (WGS or WES), then accurate HLA typing is possible. Therefore, we recommend to use [NetMHCpan](https://services.healthtech.dtu.dk/services/NetMHCpan-4.1/), or, equivalently for end-to-end analysis the [pVACtools](https://github.com/griffithlab/pVACtools). **Optimal method.**
+b) If no complete HLA gene coverage is ensured, there are the following options available:
+
+  i) RNA-seq-based HLA typing. This can be done with [OptiType](https://github.com/FRED-2/OptiType). **Can provide an estimation of HLA, but is less accurate than method (a) when complete HLA typing is possible.**
+  ii) Population-Based HLA Estimation. This can be extracted from publicly available HLA databases (e.g. http://www.allelefrequencies.net/). **Less patient-specific. Should be used only under the assumption that the ancestors share common HLA alleles.**
+  iii) Pan-MHC approach for neoantigens. This method performs predictions across multiple HLA alleles. **Less accurate than allele-specific methods**
+  
+c) If no HLA data is available, then [DeepNovo](https://github.com/nh2tran/DeepNovo). This method applies a deep-learning tool for peptide identification without using HLA data. **Less preferrable than the (a) and (b) when HLA typing is possible, since it yields in lower accuracy (HLA binding is a key factor in immune response) and less clinical validation.**
 
 To rank and evaluate the detected potential neoantigens, we apply spatial statistics, differential gene expression analysis, and comparisons/visualizations based on metrics such as affinity scores and the fold-changes.
 
