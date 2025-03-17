@@ -17,14 +17,14 @@ The mutation calling is performed by applying a modified version of the **[SComa
 The neoantigen prediction can be utilized by several methods, each one corresponding to additional data available in our sample. 
 
 <ol type="a">
-  <li>If there is DNA Information (WGS or WES), then accurate HLA typing is possible. Therefore, we recommend to use [NetMHCpan](https://services.healthtech.dtu.dk/services/NetMHCpan-4.1/), or, equivalently for end-to-end analysis the [pVACtools](https://github.com/griffithlab/pVACtools). **Optimal method.** <li>
+  <li>If there is DNA Information (WGS or WES), then accurate HLA typing is possible. Therefore, we recommend to use <b>NetMHCpan</b> (<a href="https://services.healthtech.dtu.dk/services/NetMHCpan-4.1/">https://services.healthtech.dtu.dk/services/NetMHCpan-4.1/</a>), or, equivalently for end-to-end analysis the <b>pVACtools</b> (<a href="https://github.com/griffithlab/pVACtools">https://github.com/griffithlab/pVACtools</a>). <b>Optimal method.</b></li>
   <li>If no complete HLA gene coverage is ensured, there are the following options available:</li>
   <ol type="i">
-    <li> RNA-seq-based HLA typing. This can be done with [OptiType](https://github.com/FRED-2/OptiType). **Can provide an estimation of HLA, but is less accurate than method (a) when complete HLA typing is possible.** </li>
-    <li> Population-Based HLA Estimation. This can be extracted from publicly available HLA databases (e.g. http://www.allelefrequencies.net/). **Less patient-specific. Should be used only under the assumption that the ancestors share common HLA alleles.** </li> 
-    <li>  Pan-MHC approach for neoantigens. This method performs predictions across multiple HLA alleles. **Less accurate than allele-specific methods.** </li>
-  </ol>    
-  <li>If no HLA data is available, then [DeepNovo](https://github.com/nh2tran/DeepNovo). This method applies a deep-learning tool for peptide identification without using HLA data. <b>Less preferrable than the (a) and (b) when HLA typing is possible, since it yields in lower accuracy (HLA binding is a key factor in immune response) and less clinical validation.<b></li>
+    <li>RNA-seq-based HLA typing. This can be done with <b>OptiType</b> (<a href="https://github.com/FRED-2/OptiType">https://github.com/FRED-2/OptiType</a>). <b>Can provide an estimation of HLA, but is less accurate than method (a) when complete HLA typing is possible.</b></li>
+    <li>Population-Based HLA Estimation. This can be extracted from publicly available HLA databases (e.g., <a href="http://www.allelefrequencies.net/">http://www.allelefrequencies.net/</a>). <b>Less patient-specific. Should be used only under the assumption that the ancestors share common HLA alleles.</b></li>
+    <li>Pan-MHC approach for neoantigens. This method performs predictions across multiple HLA alleles. <b>Less accurate than allele-specific methods.</b></li>
+  </ol>
+  <li>If no HLA data is available, then <b>DeepNovo</b> (<a href="https://github.com/nh2tran/DeepNovo">https://github.com/nh2tran/DeepNovo</a>). This method applies a deep-learning tool for peptide identification without using HLA data. <b>Less preferable than methods (a) and (b) when HLA typing is possible, since it yields lower accuracy (HLA binding is a key factor in immune response) and has less clinical validation.</b></li>
 </ol>
 
 
