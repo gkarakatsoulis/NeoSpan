@@ -15,6 +15,7 @@ The pipeline can be divided into three primary categories:
 The mutation calling is performed by applying a modified version of the **[SComatic tool](https://github.com/cortes-ciriano-lab/SComatic)**. The **SComatic tool** compares tumor cells with non-matched publicly available non-neoplastic samples. Instead, our approach uses tumor and normal cells from the same individual providing additional insights into personalized germline variants. **Note:** For our example, the annotations where performed by a pathologist. However, any classification method can work as well.
 
 The neoantigen prediction can be utilized by several methods, each one corresponding to additional data available in our sample. 
+
 a) If there is DNA Information (WGS or WES), then accurate HLA typing is possible. Therefore, we recommend to use [NetMHCpan](https://services.healthtech.dtu.dk/services/NetMHCpan-4.1/), or, equivalently for end-to-end analysis the [pVACtools](https://github.com/griffithlab/pVACtools). **Optimal method.**
 b) If no complete HLA gene coverage is ensured, there are the following options available:
 
