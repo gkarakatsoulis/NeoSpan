@@ -19,6 +19,9 @@ The neoantigen prediction can be utilized by several methods, each one correspon
 <ol type="a">
   <li>If there is DNA Information (WGS or WES), then accurate HLA typing is possible. Therefore, we recommend to use [NetMHCpan](https://services.healthtech.dtu.dk/services/NetMHCpan-4.1/), or, equivalently for end-to-end analysis the [pVACtools](https://github.com/griffithlab/pVACtools). **Optimal method.**</li>
   <li>If no complete HLA gene coverage is ensured, there are the following options available:</li>
+  <ol type="i">
+  <li>  Item 1
+  </ol>    
   <li>If no HLA data is available, then [DeepNovo](https://github.com/nh2tran/DeepNovo). This method applies a deep-learning tool for peptide identification without using HLA data. **Less preferrable than the (a) and (b) when HLA typing is possible, since it yields in lower accuracy (HLA binding is a key factor in immune response) and less clinical validation.**</li>
 </ol>
 
