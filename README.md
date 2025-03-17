@@ -19,17 +19,14 @@ The neoantigen prediction can be utilized by several methods, each one correspon
 <ol type="a">
   <li>If there is DNA Information (WGS or WES), then accurate HLA typing is possible. Therefore, we recommend to use [NetMHCpan](https://services.healthtech.dtu.dk/services/NetMHCpan-4.1/), or, equivalently for end-to-end analysis the [pVACtools](https://github.com/griffithlab/pVACtools). **Optimal method.**</li>
   <li>If no complete HLA gene coverage is ensured, there are the following options available:</li>
-  <li>Third item</li>
+  <li>If no HLA data is available, then [DeepNovo](https://github.com/nh2tran/DeepNovo). This method applies a deep-learning tool for peptide identification without using HLA data. **Less preferrable than the (a) and (b) when HLA typing is possible, since it yields in lower accuracy (HLA binding is a key factor in immune response) and less clinical validation.**</li>
 </ol>
 
-a) 
-b) 
 
   1) RNA-seq-based HLA typing. This can be done with [OptiType](https://github.com/FRED-2/OptiType). **Can provide an estimation of HLA, but is less accurate than method (a) when complete HLA typing is possible.**
   2) Population-Based HLA Estimation. This can be extracted from publicly available HLA databases (e.g. http://www.allelefrequencies.net/). **Less patient-specific. Should be used only under the assumption that the ancestors share common HLA alleles.**
   3) Pan-MHC approach for neoantigens. This method performs predictions across multiple HLA alleles. **Less accurate than allele-specific methods**
-  
-c) If no HLA data is available, then [DeepNovo](https://github.com/nh2tran/DeepNovo). This method applies a deep-learning tool for peptide identification without using HLA data. **Less preferrable than the (a) and (b) when HLA typing is possible, since it yields in lower accuracy (HLA binding is a key factor in immune response) and less clinical validation.**
+
 
 To rank and evaluate the detected potential neoantigens, we apply spatial statistics, differential gene expression analysis, and comparisons/visualizations based on metrics such as affinity scores and the fold-changes.
 
