@@ -12,9 +12,14 @@ The pipeline can be divided into three primary categories:
 2) Neoantigen prediction
 3) Ranking and evaluation of the detected potential neoantigens.
 
-The mutation calling is performed by applying a modified version of the **[SComatic tool](https://github.com/cortes-ciriano-lab/SComatic)**. The **SComatic tool** compares tumor cells with non-matched publicly available non-neoplastic samples. Instead, our approach uses tumor and normal cells from the same individual providing additional insights into personalized germline variants. **Note:** For our example, the annotations where performed by a pathologist. However, any classification method can work as well.
+The mutation calling is performed by applying a modified version of the **[SComatic tool](https://github.com/cortes-ciriano-lab/SComatic)**. The **SComatic tool** compares tumor cells with non-matched publicly available non-neoplastic samples. Instead, our approach uses tumor and normal cells from the same individual providing additional insights into personalized germline variants. **Note:** For our example, the annotations were performed by a pathologist. However, any classification method can work as well.
 
-The neoantigen prediction can be utilized by several methods, each one corresponding to additional data available in our sample. 
+After mutation calling, the VCF file is used for neoantigen prediction. This typically requires:
+
+1) VEP annotation to extract affected amino acid sequences
+2) HLA typing
+
+Regarding the HLA typing, there are several possibilities based on the data/information available in our sample. 
 
 <ol type="a">
   <li>If there is DNA Information (WGS or WES), then accurate HLA typing is possible. Therefore, we recommend to use <a href="https://services.healthtech.dtu.dk/services/NetMHCpan-4.1/">NetMHCpan</a>, or, equivalently for end-to-end analysis the <a href="https://github.com/griffithlab/pVACtools">pVACtools</a>. <b>Optimal method.</b></li>
@@ -27,7 +32,15 @@ The neoantigen prediction can be utilized by several methods, each one correspon
   <li>If no HLA data is available, then <a href="https://github.com/nh2tran/DeepNovo">DeepNovo</a>. This method applies a deep-learning tool for peptide identification without using HLA data. <b>Less preferable than methods (a) and (b) when HLA typing is possible, since it yields lower accuracy (HLA binding is a key factor in immune response) and has less clinical validation.</b></li>
 </ol>
 
+Once we obtain the neoantigens, we utilize further steps to rank and evaluate them. Briefly,
 
+1) Integrate the neoantigen results with annotated data (metadata)
+2) Assign each spot a neoantigen status (Positive if there is at least one strong binder: MHC Binding Affinity < 50 nM, Mutation Read Deapth > 10)
+3) Spatial visualization of neoantigen positive spots
+4) Distribution of number of neoantigens per spot
+5) Spatial Co-Localization of Immune Cells and Neoantigens -> This will highlight hotspots where neoantigen expression overlaps with immune activation
+6) Differential Expression between neoantigen-Positive and Negative spots
+7) Deconvolution
 
 To rank and evaluate the detected potential neoantigens, we apply spatial statistics, differential gene expression analysis, and comparisons/visualizations based on metrics such as affinity scores and the fold-changes.
 
