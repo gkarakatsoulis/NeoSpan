@@ -127,17 +127,3 @@ mutation_summary <- results %>%
     num_spots = n(),
     spot_barcodes = paste(unique(spot_barcode), collapse = ", ")
   )
-
-
-
-
-# # Save results
-# write.csv(spot_summary, "visium_spots_with_mutations.csv", row.names = FALSE)
-# write.csv(mutation_summary, "mutations_in_visium_spots.csv", row.names = FALSE)
-# 
-# # Print summary
-# cat("Found", nrow(spot_summary), "spots containing", nrow(mutation_summary), "unique mutations\n")
-# cat("Results saved to visium_spots_with_mutations.csv and mutations_in_visium_spots.csv\n")
-
-
-
