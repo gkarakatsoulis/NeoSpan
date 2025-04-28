@@ -7,12 +7,13 @@ Neoantigen Prediction using Spatial Multi-Omic data - Pipeline
 This pipeline allows end-to-end analysis for neoantigen prediction using Spatial Multi-Omic data.
 It incorporates spatial information along with (pathologist) region annotation (e.g. tumor vs normal) to identify, highlight and rank/evaluate potential neoantigens.
 
-The pipeline can be divided into three primary categories:
+The pipeline can be divided into four primary categories:
 1) Mutation calling (SNV detection) using (pathologist) region annotation and spatial information
 2) Neoantigen prediction
-3) Ranking and evaluation of the detected potential neoantigens.
+3) Spatial Mapping of the neoantigen-associated mutations
+4) Ranking and evaluation of the detected potential neoantigens.
 
-The mutation calling is performed by applying a modified version of the **[SComatic tool](https://github.com/cortes-ciriano-lab/SComatic)**. The **SComatic tool** compares tumor cells with non-matched publicly available non-neoplastic samples. Instead, our approach uses tumor and normal cells from the same individual providing additional insights into personalized germline variants. **Note:** For our example, the annotations were performed by a pathologist. However, any classification method can work as well.
+The mutation calling is performed by applying a modified version of the **[SComatic tool](https://github.com/cortes-ciriano-lab/SComatic)**. The **SComatic tool** compares tumor cells with non-matched publicly available non-neoplastic samples. Our approach uses tumor and normal spots from the same individual providing additional insights into personalized germline variants. Besides, since neoantigens are proteins formed from pure tumor-specific mutations, our approach removes mutations that appear in non-tumor cells.
 
 After mutation calling, the VCF file is used for neoantigen prediction. This typically requires:
 
@@ -29,13 +30,12 @@ Regarding the HLA typing, there are several possibilities based on the data/info
     <li>Population-Based HLA Estimation. This can be extracted from publicly available HLA databases (e.g., <a href="http://www.allelefrequencies.net/">http://www.allelefrequencies.net/</a>). <b>Less patient-specific. Should be used only under the assumption that the ancestors share common HLA alleles.</b></li>
     <li>Pan-MHC approach for neoantigens. This method performs predictions across multiple HLA alleles. <b>Less accurate than allele-specific methods.</b></li>
   </ol>
-  <li>If no HLA data is available, then <a href="https://github.com/nh2tran/DeepNovo">DeepNovo</a>. This method applies a deep-learning tool for peptide identification without using HLA data. <b>Less preferable than methods (a) and (b) when HLA typing is possible, since it yields lower accuracy (HLA binding is a key factor in immune response) and has less clinical validation.</b></li>
 </ol>
 
 Once we obtain the neoantigens, we utilize further steps to rank and evaluate them. Briefly,
 
 1) Integrate the neoantigen results with annotated data (metadata)
-2) Assign each spot a neoantigen status (Positive if there is at least one strong binder: MHC Binding Affinity < 50 nM, Mutation Read Deapth > 10)
+2) Assign each spot a neoantigen status (Positive if there is at least one strong binder: MHC Binding Affinity < 50 nM)
 3) Spatial visualization of neoantigen positive spots
 4) Distribution of number of neoantigens per spot
 5) Spatial Co-Localization of Immune Cells and Neoantigens -> This will highlight hotspots where neoantigen expression overlaps with immune activation
@@ -45,7 +45,7 @@ Once we obtain the neoantigens, we utilize further steps to rank and evaluate th
 To rank and evaluate the detected potential neoantigens, we apply spatial statistics, differential gene expression analysis, and comparisons/visualizations based on metrics such as affinity scores and the fold-changes.
 
 ## Features
-- Split/Filter the BAM file based on the regions annotated by the pathologist. It is strongly recommended to include normal (non-tumor) regions.
+- Split/Filter the BAM file based on the regions annotated by the pathologist. It is strongly recommended to include normal (non-tumor) regions. This way, the non-tumor-specific mutations can be filtered out.
 - Create a -personalized- Panel of Normals (PoN) using the BAM file associated with the normal region.
 - Within each non-normal region, mutation calling (SNV detection) incorporating spatial and/or cell-type information (Modified, Region-Informed **SComatic** tool). The PoN created in the previous step is used for further artifact and germline variant exclusion.
 - For the non-normal regions, construct region-specific feature-spot matrices. Those matrices will not contain SNVs that appear in the normal region since they were removed in the previous step.
@@ -55,13 +55,13 @@ To rank and evaluate the detected potential neoantigens, we apply spatial statis
 
 ## Data requirements
 - **BAM** file with a barcode tag (spot and/or cell).
-- **Pathologist annotation (csv)**: Map each barcode to a specific region.
+- **Region annotation (csv)**: Map each barcode to a specific region.
 - **Spot clustering (csv)**: (Optional) To perform mutation calling within clusters of spots
 - **Cell type annotation (csv)** (Optional) Only possible when we have single cell information apart from the spatial omics
 - **Spot to cell mapping (csv)** (Optional) Only needed if there is both spot and cell-type information
 
 ## Installation and Requirements
-It is strongly suggested to work in a Conda virtual environment.
+It is strongly recommended to work in a Conda virtual environment.
 
 Create a Conda virtual environment:
 ```bash
