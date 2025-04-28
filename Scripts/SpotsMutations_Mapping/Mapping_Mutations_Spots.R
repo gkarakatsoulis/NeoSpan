@@ -7,7 +7,7 @@ library(GenomicRanges)
 #                             1. pVACseq data
 # ==============================================================================
 
-pvac_data <- read.csv("C:/Users/George_K/Desktop/Spatial_Statistics/test_output/MHC_Class_I/bam_GT.all_epitopes.aggregated.tsv", stringsAsFactors = FALSE, sep = '\t')
+pvac_data <- read.csv("bam_GT.all_epitopes.aggregated.tsv", stringsAsFactors = FALSE, sep = '\t')
 
 mutations <- pvac_data %>%
   
@@ -100,10 +100,10 @@ mutation_mapping_function = function(bamfile, param){
   
 }
 
-results = mutation_mapping_function(bamfile = 'C:/Users/George_K/Desktop/Spatial_Statistics/Data/Prostate_Cancer/Tumor_output.bam',
+results = mutation_mapping_function(bamfile = 'Tumor_output.bam',
                                     param = param)
 
-df_spots = read.csv("C:/Users/George_K/Desktop/Spatial_Statistics/Data/Prostate_Cancer/Spots_Barcodes.csv")
+df_spots = read.csv("Spots_Barcodes.csv")
 
 df_spots$Neoantigen_Status = ifelse(df_spots$Barcode %in% results$spot_barcode, 'Positive', 'Negative')
 
