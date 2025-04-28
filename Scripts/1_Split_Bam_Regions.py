@@ -1,9 +1,16 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Feb  6 14:22:10 2025
+
+@author: George_K
+"""
+
 import pysam
 import pandas as pd
 import argparse
 
 # Set up argument parsing
-parser = argparse.ArgumentParser(description="Process a BAM file and split reads by region based on barcodes.")
+parser = argparse.ArgumentParser(description="Process a BAM file and split reads by region based on spot barcodes.")
 parser.add_argument("--data_wd", default=None, required=False, help="Path to the directory containing the BAM and CSV files.")
 parser.add_argument("--bam_file", required=True, help="Name of the BAM file")
 parser.add_argument("--region_file", required=True, help="Name of the CSV file - region annotation")
@@ -37,6 +44,7 @@ barcode_region_df = pd.read_csv(region_file, delimiter = ';')
 
 # Get unique regions from the DataFrame
 regions = barcode_region_df['Pathology'].unique()
+
 
 # Create a dictionary to map each region to its output file
 region_to_file = {}
