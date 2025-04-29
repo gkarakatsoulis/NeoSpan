@@ -67,7 +67,8 @@ Regarding the HLA typing, there are several possibilities based on the data/info
 </ol>
 
 ## Installation and Requirements
-It is strongly recommended to work in a Conda virtual environment.
+
+For the **mutation calling and neoantigen prediction**, the core modules have been developed in Python. It is strongly recommended to work in a Conda virtual environment.
 
 Create a Conda virtual environment:
 ```bash
@@ -75,6 +76,12 @@ conda create -n vNS python=3.10
 conda activate vNS
 ```
 For further requirements regarding the SComatic tool, please refer to [SComatic README requirements](https://github.com/cortes-ciriano-lab/SComatic/blob/main/README.md#installation-and-requirements).
+
+For spatial mapping of the neoantigen-associated gene mutations** and for **neoantigen evaluation**, the scripts were developed in R. The following libraries need to be installed:
+
+```bash
+
+```
 
 # Mutation calling (SNV detection) using pathologist region annotation, spatial and/or single cell information.
 
