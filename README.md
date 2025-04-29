@@ -20,17 +20,6 @@ After mutation calling, the VCF file is used for neoantigen prediction. This typ
 1) VEP annotation to extract affected amino acid sequences
 2) HLA typing
 
-Regarding the HLA typing, there are several possibilities based on the data/information available in our sample. 
-
-<ol type="a">
-  <li>If there is DNA Information (WGS or WES), then accurate HLA typing is possible. Therefore, we recommend to use <a href="https://services.healthtech.dtu.dk/services/NetMHCpan-4.1/">NetMHCpan</a>, or, equivalently for end-to-end analysis the <a href="https://github.com/griffithlab/pVACtools">pVACtools</a>. <b>Optimal method.</b></li>
-  <li>If no complete HLA gene coverage is ensured, there are the following options available:</li>
-  <ol type="i">
-    <li>RNA-seq-based HLA typing. This can be done with <b><a href="https://github.com/FRED-2/OptiType">OptiType</a></b>. <b>Can provide an estimation of HLA, but is less accurate than method (a) when complete HLA typing is possible.</b></li>
-    <li>Population-Based HLA Estimation. This can be extracted from publicly available HLA databases (e.g., <a href="http://www.allelefrequencies.net/">http://www.allelefrequencies.net/</a>). <b>Less patient-specific. Should be used only under the assumption that the ancestors share common HLA alleles.</b></li>
-    <li>Pan-MHC approach for neoantigens. This method performs predictions across multiple HLA alleles. <b>Less accurate than allele-specific methods.</b></li>
-  </ol>
-</ol>
 
 Once we obtain the neoantigens, we utilize further steps to rank and evaluate them. Briefly,
 
@@ -54,12 +43,28 @@ To rank and evaluate the detected potential neoantigens, we apply spatial statis
 - Spatial statistics.
 
 ## Data requirements
+**Mutation calling:**
 - **BAM** file with a barcode tag (spot and/or cell).
-- - For mutation calling
 - **Region annotation (csv)**: Map each barcode to a specific region.
 - **Spot clustering (csv)**: (Optional) To perform mutation calling within clusters of spots
 - **Cell type annotation (csv)** (Optional) Only possible when we have single cell information apart from the spatial omics
 - **Spot to cell mapping (csv)** (Optional) Only needed if there is both spot and cell-type information
+
+**Neoantigen prediction - Affinity binding**
+- VEP annotation to extract affected amino acid sequences
+- HLA typing
+
+Regarding the HLA typing, there are several possibilities based on the data/information available in our sample. 
+
+<ol type="a">
+  <li>If there is DNA Information (WGS or WES), then accurate HLA typing is possible. Therefore, we recommend to use <a href="https://services.healthtech.dtu.dk/services/NetMHCpan-4.1/">NetMHCpan</a>, or, equivalently for end-to-end analysis the <a href="https://github.com/griffithlab/pVACtools">pVACtools</a>. <b>Optimal method.</b></li>
+  <li>If no complete HLA gene coverage is ensured, there are the following options available:</li>
+  <ol type="i">
+    <li>RNA-seq-based HLA typing. This can be done with <b><a href="https://github.com/FRED-2/OptiType">OptiType</a></b>. <b>Can provide an estimation of HLA, but is less accurate than method (a) when complete HLA typing is possible.</b></li>
+    <li>Population-Based HLA Estimation. This can be extracted from publicly available HLA databases (e.g., <a href="http://www.allelefrequencies.net/">http://www.allelefrequencies.net/</a>). <b>Less patient-specific. Should be used only under the assumption that the ancestors share common HLA alleles.</b></li>
+    <li>Pan-MHC approach for neoantigens. This method performs predictions across multiple HLA alleles. <b>Less accurate than allele-specific methods.</b></li>
+  </ol>
+</ol>
 
 ## Installation and Requirements
 It is strongly recommended to work in a Conda virtual environment.
