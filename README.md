@@ -55,6 +55,7 @@ To rank and evaluate the detected potential neoantigens, we apply spatial statis
 
 ## Data requirements
 - **BAM** file with a barcode tag (spot and/or cell).
+- - For mutation calling
 - **Region annotation (csv)**: Map each barcode to a specific region.
 - **Spot clustering (csv)**: (Optional) To perform mutation calling within clusters of spots
 - **Cell type annotation (csv)** (Optional) Only possible when we have single cell information apart from the spatial omics
