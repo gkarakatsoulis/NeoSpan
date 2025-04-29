@@ -80,24 +80,32 @@ For further requirements regarding the SComatic tool, please refer to [SComatic 
 For spatial mapping of the neoantigen-associated gene mutations** and for **neoantigen evaluation**, the scripts were developed in R. The following libraries need to be installed:
 
 ```bash
-library(shiny)
-library(shinydashboard)
-library(shinycssloaders)
-library(shinyjs)
-library(DT)
-library(ggplot2)
-library(rstatix)
-library(dplyr)
-library(Seurat)
-library(SPOTlight)
-library(BayesSpace)
-library(spdep)
-library(mistyR)
-library(plotly)
-library(nicheDE)
-library(SingleCellExperiment)
-library(scran)
-library(NMF)
+'Rsamtools'
+'tidyr'
+'GenomicRanges'
+
+'shiny'
+'shinydashboard'
+'shinycssloaders'
+'shinyjs'
+
+'DT'
+'ggplot2'
+'rstatix'
+'dplyr'
+
+'Seurat'
+'SPOTlight'
+'BayesSpace'
+'spdep'
+
+'mistyR'
+'plotly'
+'nicheDE'
+'SingleCellExperiment'
+
+'scran'
+'NMF'
 ```
 
 # Mutation calling (SNV detection) using pathologist region annotation, spatial and/or single cell information.
