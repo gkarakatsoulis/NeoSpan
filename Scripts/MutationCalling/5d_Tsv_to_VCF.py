@@ -15,7 +15,7 @@ VCF_HEADER = """##fileformat=VCFv4.0
 ##FORMAT=<ID=DP,Number=1,Type=Integer,Description="Read depth at this position in the sample">
 ##FORMAT=<ID=AD,Number=.,Type=Integer,Description="Depth of reads supporting alleles 0/1/2/3...">
 ##INFO=<ID=CSQ,Number=.,Type=String,Description="Consequence annotations from Ensembl VEP. Format: Allele|Consequence|...">
-#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\tFORMAT\tbam_GT
+#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\tFORMAT\tb
 """
 
 def parse_args():
@@ -33,7 +33,7 @@ def process_line(row):
         alt = row['REF']
 
     filt = row['FILTER'].split(',')[0] if row['FILTER'] else 'PASS'
-    bam_gt = row['bam_GT']
+    bam_gt = row['b']
     info_dict = dict(zip(row['INFO'].split('|'), bam_gt.split('|')))
     dp = info_dict.get('DP', '.')
     bc = info_dict.get('BC', '0:0:0:0:0:0:0:0')
